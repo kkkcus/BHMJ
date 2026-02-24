@@ -28,7 +28,7 @@ export default function Login() {
             type="button"
             className={`${s.socialBtn} ${s.kakao}`}
             onClick={() => {
-              window.location.href = "http://localhost:8000/auth/kakao/login";
+              window.location.href = "/auth/kakao/login";
             }}
             >
               <img src="/kakao.png" alt="" aria-hidden className={s.icon} />
