@@ -23,6 +23,7 @@ def _env():
     client_secret = os.getenv("KAKAO_CLIENT_SECRET", "")
     redirect_uri = os.getenv("KAKAO_REDIRECT_URI", "http://localhost:8000/auth/kakao/callback")
     frontend_success = os.getenv("FRONTEND_LOGIN_SUCCESS", "http://localhost:5173/")
+    print(f"[DEBUG] KAKAO_REDIRECT_URI={redirect_uri}", flush=True)
     if not client_id:
         raise RuntimeError("KAKAO_REST_API_KEY가 설정되지 않았습니다.")
     return client_id, client_secret, redirect_uri, frontend_success
