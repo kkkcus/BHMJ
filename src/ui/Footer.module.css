@@ -1,0 +1,41 @@
+:root{
+  --footer-h: 72px;
+  --line: #e5e7eb;
+  --text: #111827;
+  --muted: #6b7280;
+  --bg: #f6f7fb;
+  --card-bg:#fff;
+}
+
+/* 푸터 바 */
+.wrap{
+  position: sticky;
+  bottom: 0;
+  height: var(--footer-h);
+  background: #ffe4e6;        /* 연핑크 */
+  border-top: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 8px;
+  padding: 0 8px;
+  z-index: 10;
+}
+
+/* 아이템 */
+.item, .itemActive{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  color: var(--muted);
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 10px;
+}
+
+.itemActive{
+  color: var(--text);
+  background: rgba(255,255,255,0.7);
+}

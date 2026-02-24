@@ -1,0 +1,51 @@
+/* src/components/BottomNav.module.css */
+
+:root {
+  --footer-h: 83px;
+}
+
+.wrap {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(92vw, var(--card-max, 420px));
+  height: var(--footer-h);
+  background: #A8806B;
+  border-top: 2px solid #8a6657;
+  display: flex;
+  align-items: stretch;
+  z-index: 100;
+}
+
+.tab,
+.tabActive {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 4px 0 0;
+  font-family: "GangwonEducationTteontteon", system-ui, sans-serif;
+}
+
+.tab     { color: #FFF6DC; border-top: 3px solid transparent; }
+.tabActive { color: #FFF6DC; border-top: 3px solid #5c4035; }
+
+.icon {
+  width: 55px;
+  height: 55px;
+  object-fit: contain;
+  display: block;
+}
+
+.label {
+  font-size: 16px;
+  line-height: 1;
+  padding-top: 0px;
+  white-space: nowrap;
+}

@@ -1,0 +1,318 @@
+/* ---------------- 페이지 레이아웃 ---------------- */
+.pageWrap {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+/* ---------------- 상단 바 ---------------- */
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 60px;
+  padding: 0 16px;
+  background: #A8806B;
+  margin: -16px -16px 0;
+}
+.title {
+  flex: 1;
+  align-self: stretch;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 17px;
+  font-weight: 700;
+  color: #FFF6DC;
+}
+.iconCircle {
+  width: 40px; height: 40px;
+  border: none;
+  border-radius: 9999px;
+  background: transparent;
+  display: grid; place-items: center;
+  cursor: pointer;
+}
+.icon { width: 30px; height: 30px; object-fit: contain; display: block; }
+
+/* ---------------- 본문 ---------------- */
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px 0 24px;
+}
+
+/* ---------------- 섹션 공통 ---------------- */
+.section {
+  background: #fff;
+  border: 3px solid #A8806B;
+  border-radius: 16px;
+  padding: 10px 16px;
+}
+.sectionTitle {
+  font-weight: 700;
+  font-size: 14px;
+  color: #A8806B;
+  margin-bottom: 12px;
+}
+
+/* ---------------- 프로필 섹션 (갈색 배경) ---------------- */
+.sectionBrown {
+  background: #A8806B;
+  border-color: #A8806B;
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+/* ---------------- 프로필 카드 ---------------- */
+.profileCard {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.avatarWrap {
+  position: relative;
+  width: 92px; height: 92px;
+  flex-shrink: 0;
+}
+.avatar {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 64px; height: 64px;
+  border-radius: 9999px;
+  object-fit: cover;
+}
+.avatarPlaceholder {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 64px; height: 64px;
+  border-radius: 9999px;
+  background: rgba(255,255,255,0.25);
+}
+.avatarFrame {
+  position: absolute;
+  top: 0; left: -2px;
+  width: 92px; height: 92px;
+  pointer-events: none;
+  z-index: 2;
+}
+.fileInput {
+  display: none;
+}
+.profileInfo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-left: 6px;
+}
+.profileName {
+  font-weight: 700;
+  font-size: 20px;
+  color: #fff;
+}
+.profileRank {
+  font-size: 12px;
+  color: rgba(255,255,255,0.7);
+}
+.editBtn {
+  border: none;
+  background: #FFFAE5;
+  color: #A8806B;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 7px 14px;
+  border-radius: 12px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+/* ---------------- 피하고 싶은 재료 칩 ---------------- */
+.chipRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+  min-height: 0;
+}
+.chip {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 10px;
+  background: #FFF6DC;
+  border: 2px solid #A8806B;
+  border-radius: 12px;
+}
+.chipLabel {
+  font-size: 13px;
+  font-weight: 600;
+  color: #A8806B;
+}
+.chipX {
+  border: none;
+  background: transparent;
+  color: #A8806B;
+  font-size: 15px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0 2px;
+}
+
+/* ---------------- 재료 입력창 ---------------- */
+.inputRow {
+  display: flex;
+  gap: 8px;
+}
+.avoidInput {
+  flex: 1;
+  height: 40px;
+  box-sizing: border-box;
+  border: 2px solid #A8806B;
+  border-radius: 12px;
+  padding: 0 12px;
+  font-size: 13px;
+  outline: none;
+  background: #fff;
+  font-family: system-ui, sans-serif;
+}
+.avoidInput:focus {
+  box-shadow: 0 0 0 3px rgba(168,128,107,.2);
+}
+.avoidInput::placeholder { color: #9ca3af; }
+.addBtn {
+  width: 40px; height: 40px;
+  border: none;
+  border-radius: 12px;
+  background: #A8806B;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+
+/* ---------------- 로그아웃 버튼 ---------------- */
+.logoutBtn {
+  width: 100%;
+  padding: 12px 0;
+  border: none;
+  border-radius: 16px;
+  background: #F28E8E;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* ---------------- 수정 모달 ---------------- */
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+.modalCard {
+  background: #fff;
+  border-radius: 20px;
+  padding: 24px 20px 16px;
+  width: 280px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.modalTitle {
+  font-weight: 700;
+  font-size: 16px;
+  color: #A8806B;
+  text-align: center;
+  margin-bottom: 4px;
+}
+.modalOption {
+  width: 100%;
+  padding: 12px 0;
+  border: 2px solid #A8806B;
+  border-radius: 12px;
+  background: #FFF6DC;
+  color: #A8806B;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.modalCancel {
+  width: 100%;
+  padding: 10px 0;
+  border: none;
+  border-radius: 12px;
+  background: transparent;
+  color: #9ca3af;
+  font-size: 14px;
+  cursor: pointer;
+}
+.modalInput {
+  width: 100%;
+  box-sizing: border-box;
+  height: 44px;
+  border: 2px solid #A8806B;
+  border-radius: 12px;
+  padding: 0 12px;
+  font-size: 14px;
+  outline: none;
+  font-family: system-ui, sans-serif;
+}
+.modalInput:focus {
+  box-shadow: 0 0 0 3px rgba(168,128,107,.2);
+}
+
+/* ---------------- 개인정보 토글 ---------------- */
+.toggleRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+.toggleLabel {
+  font-weight: 700;
+  font-size: 14px;
+  color: #A8806B;
+}
+.toggle {
+  position: relative;
+  width: 48px; height: 28px;
+  border: none;
+  border-radius: 9999px;
+  background: #D1D5DB;
+  cursor: pointer;
+  transition: background 0.2s;
+  padding: 0;
+  flex-shrink: 0;
+}
+.toggleOn {
+  background: #A8806B;
+}
+.toggleThumb {
+  position: absolute;
+  top: 3px; left: 3px;
+  width: 22px; height: 22px;
+  border-radius: 9999px;
+  background: #fff;
+  transition: transform 0.2s;
+  display: block;
+}
+.toggleOn .toggleThumb {
+  transform: translateX(20px);
+}
+.toggleDesc {
+  margin: 0;
+  font-size: 12px;
+  color: #9ca3af;
+  line-height: 1.5;
+}

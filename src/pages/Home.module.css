@@ -1,0 +1,196 @@
+/* Home.module.css — 홈 화면 전용 */
+
+/* 카드: 로그인 카드와 동일 폭을 쓰되, 모서리는 각지게(0) */
+.card {
+  width: 100%;
+  background: var(--card-bg);
+  border: 1px solid var(--line);
+  border-radius: 0;               /* ← 각진 모서리 */
+  box-shadow: 0 8px 24px rgba(0,0,0,.05);
+  padding: 16px;
+  padding-bottom: calc(var(--footer-h, 56px) + 16px); /* BottomNav 공간 */
+}
+
+/* 상단 툴바: 왼쪽 로고 - 가운데 검색 - 오른쪽 알림 */
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: #A8806B;
+  border-radius: 0;
+  margin: -16px -16px 12px;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.logo {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  display: block;
+}
+
+.searchGrow {
+  flex: 1;
+  display: flex;
+}
+
+.searchGrow input {
+  background: #FFF6DC;
+  height: 36px;
+  border-radius: 12px;
+}
+
+/* 알림 버튼(동그란 버튼 안에 이미지만 둥글게) */
+.iconBtn {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.icon {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  display: block;
+}
+
+/* 트렌드 영역(내부 박스는 둥글게 가능) */
+.panel {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  min-height: 160px;
+  display: grid;
+  place-items: center;
+  color: #6b7280;
+}
+
+/* 기능 6칸 */
+.grid6 {
+  margin-top: 16px;
+  display: grid;
+  gap: 20px 16px;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 2px solid #A8806B;
+  border-bottom: 2px solid #A8806B;
+  padding: 16px 0;
+}
+
+.tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;            /* ✅ 10 -> 6 (아이콘-라벨 간격 줄임) */
+  text-align: center;
+  font-size: 14px;
+}
+
+/* 아이콘 박스 */
+.square {
+  width: 96px;         /* ✅ 104 -> 96 (아이콘 자리 조금 줄임) */
+  height: 96px;        /* ✅ 104 -> 96 */
+  border: none;
+  background: transparent;
+  display: grid;
+  place-items: center;
+}
+
+/* 아이콘 이미지 */
+.square img {
+  width: 78px;         /* ✅ 72 -> 78 (아이콘 더 크게) */
+  height: 78px;
+  object-fit: contain;
+  display: block;
+  transform: scale(1.1); /* ✅ 과한 보정이면 1.0~1.1로 조절 */
+}
+
+.tileLabel {
+  margin-top: -6px;
+  line-height: 1.1;
+  color: #A8806B;
+}
+
+.bottomSpacer {
+  height: 16px;
+}
+
+/* 섹션(인기 레시피 / 밥스타그램) */
+.section {
+  margin-top: 18px;
+}
+
+.section + .section {
+  border-top: 2px solid #A8806B;
+  padding-top: 18px;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.sectionTitle {
+  font-size: 14px;
+  color: #A8806B;
+}
+
+.moreBtn {
+  border: 0;
+  background: transparent;
+  color: #6b7280;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.cardGrid3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.miniCard {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+  position: relative;
+}
+
+.miniRank {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  font-size: 11px;
+  font-weight: bold;
+  color: #A8806B;
+  z-index: 1;
+}
+
+.miniImg {
+  height: 120px;
+  display: grid;
+  place-items: center;
+  color: #9ca3af;
+  font-size: 12px;
+}
+
+.miniLabel {
+  background: #A8806B;
+  color: #fff;
+  text-align: center;
+  padding: 8px;
+  font-size: 12px;
+}

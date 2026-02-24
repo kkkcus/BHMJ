@@ -1,0 +1,438 @@
+:root{
+  --line:#e5e7eb;
+  --muted:#6b7280;
+  --text:#111827;
+}
+
+/* ---------------- 페이지 레이아웃 ---------------- */
+.pageWrap{
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+/* 상단 고정 영역(topbar~구분선) 전체를 sticky로 묶음 */
+.stickyTop{
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: #FFF6DC;
+  margin: -16px -16px 0;
+  padding: 16px;
+}
+
+/* ---------------- 상단 바 ---------------- */
+.topbar{
+  display:flex; align-items:center; justify-content:space-between;
+  min-height: 60px;
+  padding: 0 16px;
+  background: #A8806B;
+  margin: -16px -16px 12px;
+}
+.title{
+  flex: 1;
+  align-self: stretch;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 17px;
+  font-weight: 700;
+  color: #FFF6DC;
+}
+.iconCircle{
+  width: 40px; height: 40px;
+  border: none;
+  border-radius: 9999px;
+  background: transparent;
+  display: grid; place-items: center;
+  cursor: pointer;
+}
+.icon{ width: 30px; height: 30px; object-fit: contain; display:block; }
+
+/* ---------------- 검색 블록 ---------------- */
+.searchBlock{
+  padding: 8px 0 4px;
+  display:flex; gap:8px; align-items:center;
+}
+.searchRow{
+  position: relative;
+  display: block;
+  width: 100%;                 /* 카드 폭 꽉 채우기 */
+}
+.search{
+  width: 100%;
+  height: 40px;
+  box-sizing: border-box;
+  border: 3px solid #A8806B;
+  border-radius: 12px;
+  padding: 0 14px;
+  outline: none;
+  background: #fff;
+  text-align: left;
+  font-family: system-ui, sans-serif;
+  font-size: 13px;
+}
+.search::placeholder{ color: var(--muted); }
+
+/* 제안 드롭다운 */
+.dropdown{
+  position: absolute;
+  left: 0; right: 0; top: 44px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fff;
+  overflow: hidden;
+  z-index: 5;
+
+  /* 개선 */
+  max-height: 280px;
+  overflow-y: auto;
+  box-shadow: 0 8px 24px rgba(0,0,0,.08);
+}
+.dropItem{
+  width: 100%; padding: 10px 12px; text-align:left; border:0; background:#fff; cursor:pointer;
+  font-family: "GangwonEducationModuche", sans-serif;
+  font-weight: 700;
+}
+.dropItem + .dropItem{ border-top: 1px solid var(--line); }
+.dropItem:hover{ background: #fafafa; }
+.dropItemActive, .dropItem:focus{ background:#f3f4f6; }
+
+/* 스크롤 바 얇게 */
+.dropdown::-webkit-scrollbar{ width: 8px; }
+.dropdown::-webkit-scrollbar-thumb{ background:#e5e7eb; border-radius:999px; }
+.dropdown{ scrollbar-width: thin; scrollbar-color:#e5e7eb transparent; }
+
+/* 검색 포커스 링 */
+.search:focus{
+  box-shadow: 0 0 0 3px rgba(59,130,246,.15);
+  border-color: #c7d2fe;
+}
+
+/* ---------------- 편집 행(개수/단위) ---------------- */
+.editRow{
+  display: grid;
+  grid-template-columns: 1fr 32px 72px 32px 84px 32px;
+  gap: 8px;
+  align-items: center;
+  margin-top: 12px;
+  padding: 0 16px;
+}
+.nameBox{ display:flex; }
+.nameInput{
+  width: 100%; height: 40px; border: 1px solid var(--line); border-radius: 999px; padding: 0 14px; background:#fff;
+}
+.roundMini{
+  width: 26px; height: 26px;
+  border: 1px solid #A8806B;
+  border-radius: 8px;
+  background: #A8806B;
+  cursor: pointer;
+  color: #FFF6DC;
+  font-family: "GangwonEducationTteontteon", system-ui, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 6px;
+}
+.qtyInput{
+  width: 72px; height: 40px;
+  border: 1px solid var(--line); border-radius: 12px; text-align: center; background: #fff;
+}
+.unit{
+  min-width: 66px;
+  height: 26px;
+  border: 1px solid #A8806B;
+  border-radius: 10px;
+  background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23A8806B'/%3E%3C/svg%3E") no-repeat right 8px center;
+  padding: 0 28px 0 8px;
+  -webkit-appearance: none;
+  appearance: none;
+  font-family: system-ui, sans-serif;
+  color: #A8806B;
+  cursor: pointer;
+}
+.deleteRed{
+  width: 32px; height: 32px;
+  border: 1px solid #fca5a5;
+  background: #fee2e2;
+  color: #b91c1c;
+  border-radius: 9999px;
+  cursor: pointer;
+}
+
+/* ---------------- 구분선 ---------------- */
+.divider{
+  height:3px; background:#A8806B;
+  border-radius: 999px;
+  margin: 4px 0;
+}
+
+/* ---------------- 선택된 재료 리스트 ---------------- */
+.list{
+  padding: 6px 0 0;
+}
+.itemCard{
+  display: grid;
+  grid-template-columns: 1fr auto auto 32px;  /* 이름 | 수량 | 단위 | 삭제 */
+  align-items: center;
+  gap: 8px;
+  border: 3px solid #A8806B;
+  border-radius: 12px;
+  background: #fff;
+  padding: 6px 12px;
+}
+.itemCard + .itemCard{ margin-top: 8px; }
+.itemCard:hover{ background:#fcfcfc; }
+
+.cardName{ font-weight: 600; color: #A8806B; padding-top: 6px; padding-left: 20px; }
+
+.qtyBox{
+  display: grid;
+  grid-auto-flow: column;
+  gap: 6px;
+  align-items: center;
+}
+.qtyDisplay{
+  min-width: 70px; text-align: center;
+  height: 26px; display: flex; align-items: center; justify-content: center; padding-top: 6px;
+  border: 1px solid #A8806B; border-radius: 8px; background:#fff; color: #A8806B;
+}
+.delete{
+  width: 22px; height: 22px;
+  border: none;
+  background: #F05A5A;
+  color: #fff;
+  border-radius: 9999px;
+  cursor: pointer;
+}
+
+/* ---------------- 버튼 인터랙션 ---------------- */
+.iconCircle:hover,
+.roundMini:hover,
+.delete:hover{ filter: brightness(0.98); }
+.iconCircle:active,
+.roundMini:active,
+.delete:active{ transform: translateY(1px); }
+
+/* ---------------- 하단 영역(필요 시) ---------------- */
+.bottomArea{ padding: 8px 12px 16px; }
+.primaryWide{
+  height: 42px; width: 100%;
+  border: 1px solid var(--line);
+  background: #fff;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+/* ---------------- 아주 좁은 화면 대응 ---------------- */
+@media (max-width: 360px){
+  .itemCard{
+    grid-template-columns: 1fr auto 28px 28px; /* 단위 숨길 때의 배치 */
+  }
+  .unit{ display:none; }
+  .qtyDisplay{ min-width: 28px; }
+}
+
+/* 하단 버튼(추가하기 자리 대체) */
+.bottomArea{
+  margin-top: 4px;
+  padding: 4px 0 4px;
+}
+.recommendBtn{
+  width: 100%;
+  height: 44px;
+  border: none;
+  background: #A8806B;
+  color: #fff;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  padding-top: 0;
+}
+.recommendBtn:disabled{
+  opacity: .6;
+  cursor: default;
+}
+
+/* 추천 결과 카드 (예전 스타일 재사용) */
+.results{ padding: 8px 16px 16px; display:flex; flex-direction:column; gap:6px; }
+.recipe{
+  border:3px solid #A8806B; border-radius:12px; background:#fff;
+  padding: 12px;
+  display:flex; align-items:center; justify-content:space-between; gap:12px;
+}
+.recipeHead{ display:flex; align-items:center; gap:10px; }
+.recipeHead img{ width:42px; height:42px; object-fit:contain; }
+.titleRow{ font-weight:700; color: #A8806B; padding-top: 6px; }
+.meta{ font-size:12px; color:var(--muted); margin-top:2px; padding-top: 4px; }
+.viewBtn{
+  height:36px; padding: 6px 12px 0; border:none; background:#A8806B; border-radius:10px; cursor:pointer;
+  color: #FFF6DC;
+  font-family: "GangwonEducationTteontteon", system-ui, sans-serif;
+}
+
+/* ================= 무신사식 필터/정렬 ================= */
+
+/* 버튼바 */
+.filterBar{
+  padding: 0;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin-top: 2px;
+  flex-wrap: wrap;
+}
+
+/* 버튼/칩 공통: 높이+모양 통일 */
+.chipBtn,
+.chipActive{
+  box-sizing: border-box;
+  height: 34px;
+  padding: 6px 18px 0;
+  border-radius: 10px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+
+  line-height: 1;
+  cursor: pointer;
+  border: 3px solid #A8806B;
+}
+
+/* 정렬/필터 기본 버튼 */
+.chipBtn{
+  background: #A8806B;
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  font-family: "GangwonEducationTteontteon", system-ui, sans-serif;
+}
+
+/* 활성 칩 */
+.chipActive{
+  background: transparent;
+  font-size: 12px;
+  color: #A8806B;
+  font-family: "GangwonEducationTteontteon", system-ui, sans-serif;
+  font-weight: 600;
+}
+.chipActive:hover{ background: transparent; }
+
+/* X 동그라미 */
+.chipX{
+  font-size: 14px;
+  line-height: 1;
+  color: #A8806B;
+  transform: translateY(1px);
+  margin-left: 4px;
+}
+
+
+/* 바텀시트 */
+.sheetBackdrop{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.35);
+  display:flex;
+  justify-content:center;
+  align-items:flex-end;
+  z-index: 9999;
+}
+
+.sheet{
+  width: min(520px, 100%);
+  background: #FFFAE5;
+  border-top-left-radius: 18px;
+  border-top-right-radius: 18px;
+  padding: 12px 12px 16px;
+  box-shadow: 0 -8px 24px rgba(0,0,0,.12);
+}
+
+.sheetHeader{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding: 4px 6px 10px;
+  border-bottom: 1px solid var(--line);
+}
+
+.sheetTitle{
+  font-weight: 800;
+  color: #A8806B;
+}
+
+.sheetClose{
+  border:0;
+  background: transparent;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.sheetBody{
+  padding: 12px 6px;
+  display:flex;
+  flex-direction:column;
+  gap: 10px;
+}
+
+.opt{
+  border: 1px solid var(--line);
+  background: #fff;
+  padding: 15px 12px 9px;
+  border-radius: 12px;
+  cursor: pointer;
+  outline: none;
+  text-align: left;
+  font-family: "GangwonEducationModuche", sans-serif;
+  font-weight: 700;
+  color: #A8806B;
+}
+.opt:hover{ background: #fafafa; }
+.optOn{ background: #A8806B; color: #fff; border-color: #A8806B; }
+
+.sectionTitle{
+  font-size: 13px;
+  color: #A8806B;
+  margin-bottom: 2px;
+  margin-left: 4px;
+}
+
+.pills{
+  display:flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.pillOpt{
+  border: 1px solid var(--line);
+  background: #fff;
+  padding: 11px 12px 5px;
+  border-radius: 999px;
+  cursor: pointer;
+  outline: none;
+  font-family: "GangwonEducationModuche", sans-serif;
+  font-weight: 700;
+}
+.pillOptOn{
+  background: #A8806B;
+  color: #fff;
+  border-color: #111;
+}
+
+.sheetFooter{
+  padding: 10px 6px 0;
+}
+
+.applyBtn{
+  width: 100%;
+  border: 0;
+  border-radius: 12px;
+  padding: 12px;
+  background: #A8806B;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 800;
+}

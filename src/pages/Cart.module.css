@@ -1,0 +1,145 @@
+/* ---------------- 페이지 레이아웃 ---------------- */
+.pageWrap {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+/* 상단 고정 영역(topbar + 검색) */
+.stickyTop {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: #FFF6DC;
+  margin: -16px -16px 0;
+  padding: 16px;
+}
+
+/* ---------------- 상단 바 ---------------- */
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 60px;
+  padding: 0 16px;
+  background: #A8806B;
+  margin: -16px -16px 12px;
+}
+.title {
+  flex: 1;
+  align-self: stretch;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 17px;
+  font-weight: 700;
+  color: #FFF6DC;
+}
+.iconCircle {
+  width: 40px; height: 40px;
+  border: none;
+  border-radius: 9999px;
+  background: transparent;
+  display: grid; place-items: center;
+  cursor: pointer;
+}
+.icon { width: 30px; height: 30px; object-fit: contain; display: block; }
+
+/* ---------------- 검색창 ---------------- */
+.searchBlock {
+  padding: 4px 0 8px;
+}
+.search {
+  width: 100%;
+  height: 40px;
+  box-sizing: border-box;
+  border: 3px solid #A8806B;
+  border-radius: 12px;
+  padding: 0 14px;
+  outline: none;
+  background: #fff;
+  font-family: system-ui, sans-serif;
+  font-size: 13px;
+}
+.search::placeholder { color: #6b7280; }
+.search:focus {
+  box-shadow: 0 0 0 3px rgba(168,128,107,.2);
+}
+
+/* ---------------- 본문 영역 ---------------- */
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---------------- 빈 상태 ---------------- */
+.empty {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 16px;
+  gap: 16px;
+}
+.emptyImg {
+  width: 160px;
+  height: 160px;
+  object-fit: contain;
+  opacity: 0.4;
+}
+.emptyText {
+  margin: 0;
+  color: #A8806B;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+/* ---------------- 아이템 리스트 ---------------- */
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 8px 0 16px;
+}
+.itemCard {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 3px solid #A8806B;
+  border-radius: 12px;
+  background: #fff;
+  padding: 10px 14px;
+}
+.itemChecked {
+  opacity: 0.4;
+}
+.checkbox {
+  width: 18px; height: 18px;
+  accent-color: #A8806B;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.itemName {
+  flex: 1;
+  font-weight: 600;
+  color: #A8806B;
+  padding-top: 4px;
+}
+.itemQty {
+  font-size: 13px;
+  color: #6b7280;
+  padding-top: 4px;
+}
+.deleteBtn {
+  width: 24px; height: 24px;
+  border: none;
+  background: #F05A5A;
+  color: #fff;
+  border-radius: 9999px;
+  cursor: pointer;
+  font-size: 12px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}

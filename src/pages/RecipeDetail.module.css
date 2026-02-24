@@ -1,0 +1,297 @@
+/* ---------------- 페이지 레이아웃 ---------------- */
+.pageWrap {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding-bottom: 0; /* fixedBottom이 있을 때 조정 */
+}
+
+/* ---------------- 상단바 ---------------- */
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 60px;
+  padding: 0 16px;
+  background: #A8806B;
+  margin: -16px -16px 0;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+.title {
+  flex: 1;
+  align-self: stretch;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 17px;
+  font-weight: 700;
+  color: #FFF6DC;
+  font-size: 18px;
+}
+.iconCircle {
+  width: 40px; height: 40px;
+  border: none;
+  border-radius: 9999px;
+  background: transparent;
+  display: grid; place-items: center;
+  cursor: pointer;
+}
+.icon { width: 30px; height: 30px; object-fit: contain; display: block; }
+
+/* ---------------- 스크롤 콘텐츠 ---------------- */
+.content {
+  flex: 1;
+  padding: 16px 0 160px; /* 하단 고정 버튼 + 툴바 여백 */
+}
+
+/* ---------------- 뱃지 요약 ---------------- */
+.badges {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.badge {
+  background: #A8806B;
+  color: #FFF6DC;
+  border-radius: 999px;
+  padding: 0 14px 4px;
+  font-size: 13px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+}
+.badgeDifficulty {
+  padding: 4px 14px 0;
+}
+.badgeTime {
+  padding: 2px 14px 2px;
+}
+
+/* ---------------- 섹션 공통 ---------------- */
+.section {
+  margin-bottom: 20px;
+}
+.lastSection {
+  margin-bottom: 0;
+}
+.sectionTitle {
+  font-weight: 700;
+  color: #A8806B;
+  font-size: 15px;
+  margin-bottom: 10px;
+  padding-bottom: 6px;
+  border-bottom: 2px solid #A8806B;
+}
+.sectionTitlePlain {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+/* ---------------- 재료 리스트 ---------------- */
+.ingList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.ingItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 2px solid #D4B896;
+  border-radius: 10px;
+  background: #fff;
+  padding: 8px 12px;
+}
+.ingMissing {
+  border-color: #fca5a5;
+  background: #fff5f5;
+}
+.ingName {
+  flex: 1;
+  font-weight: 600;
+  color: #374151;
+  padding-top: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.ingQty {
+  font-size: 13px;
+  color: #6b7280;
+  padding-top: 4px;
+}
+.missingTag {
+  background: #fee2e2;
+  color: #dc2626;
+  font-size: 11px;
+  font-family: "GangwonEducationModuche", sans-serif;
+  font-weight: 700;
+  border-radius: 999px;
+  padding: 0 8px 2px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  transform: translateY(-2px);
+}
+
+/* ---------------- 조리 순서 ---------------- */
+.stepList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.stepItem {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+.stepNum {
+  color: #A8806B;
+  font-size: 16px;
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 6px;
+  width: 16px;
+  text-align: right;
+}
+.stepText {
+  flex: 1;
+  line-height: 1.6;
+  color: #374151;
+  padding-top: 2px;
+  font-family: "GangwonEducationModuche", sans-serif;
+  font-weight: 700;
+}
+
+/* ---------------- 팁 / 대체재료 ---------------- */
+.tipText {
+  margin: 0;
+  line-height: 1.7;
+  color: #4b5563;
+  font-family: "GangwonEducationModuche", sans-serif;
+  font-weight: 700;
+}
+
+/* ---------------- 대체 재료 쌍 ---------------- */
+.subList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.subRow {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+.subOriginal {
+  font-weight: 700;
+  color: #374151;
+  font-family: "GangwonEducationModuche", sans-serif;
+}
+.subArrow {
+  color: #A8806B;
+  font-size: 16px;
+  font-weight: 700;
+}
+.subReplacement {
+  font-weight: 700;
+  color: #374151;
+  font-family: "GangwonEducationModuche", sans-serif;
+}
+
+/* ---------------- 하단 고정 버튼 ---------------- */
+.fixedBottom {
+  position: fixed;
+  bottom: calc(var(--footer-h, 83px) + 16px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(calc(92vw - 32px), 388px);
+  padding: 8px 0 4px;
+  z-index: 110;
+}
+.cartBtn {
+  width: 100%;
+  height: 48px;
+  border: none;
+  background: #8CD98A;
+  color: #ffffff;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 15px;
+  cursor: pointer;
+  padding-top: 2px;
+}
+.cartBtn:active {
+  filter: brightness(0.95);
+}
+
+/* ---------------- 모달 ---------------- */
+.modalBackdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+}
+.modal {
+  width: min(80vw, 340px);
+  background: #FFF6DC;
+  border-radius: 20px;
+  padding: 28px 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.modalMsg {
+  font-size: 17px;
+  font-weight: 700;
+  color: #374151;
+  text-align: center;
+  margin: 0 0 4px;
+  padding-top: 4px;
+}
+.modalBtnPrimary {
+  width: 100%;
+  height: 50px;
+  border: none;
+  border-radius: 12px;
+  background: #8CD98A;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  padding-top: 2px;
+}
+.modalBtnSecondary {
+  width: 100%;
+  height: 50px;
+  border: 2px solid #D4B896;
+  border-radius: 12px;
+  background: transparent;
+  color: #A8806B;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  padding-top: 2px;
+}
+
+/* ---------------- not found ---------------- */
+.notFound {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6b7280;
+  padding-top: 20px;
+}
