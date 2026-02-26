@@ -106,7 +106,7 @@
 }
 
 .guest{
-  background: #E5E7EB;
+  background: #FFFAE5;
   color: var(--text);
   border: 1px solid var(--line);
 }
