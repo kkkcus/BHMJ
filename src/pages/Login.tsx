@@ -51,6 +51,7 @@ export default function Login() {
             </button>
 
             <button type="button" className={`${s.socialBtn} ${s.guest}`} onClick={handleGuestLogin}>
+              <img src="/guest.png" alt="" aria-hidden className={s.icon} />
               <span>게스트로 계속</span>
             </button>
           </div>
