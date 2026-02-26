@@ -105,5 +105,11 @@
   border: 1px solid var(--line);
 }
 
+.guest{
+  background: #E5E7EB;
+  color: var(--text);
+  border: 1px solid var(--line);
+}
+
 .socialBtn:hover{ filter: brightness(0.98); }
 .socialBtn:active{ transform: translateY(1px); }

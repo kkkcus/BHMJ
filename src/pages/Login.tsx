@@ -5,7 +5,7 @@ import s from "./Login.module.css";
 import { useAuth } from "../context/AuthContext";
 
 export default function Login() {
-  const { user, loading } = useAuth();
+  const { user, loading, loginAsGuest } = useAuth();
   const nav = useNavigate();
 
   useEffect(() => {
@@ -13,6 +13,11 @@ export default function Login() {
   }, [user, loading, nav]);
 
   if (loading) return null;
+
+  const handleGuestLogin = () => {
+    loginAsGuest();
+    nav("/home", { replace: true });
+  };
 
   return (
     <Screen withCard className={s.loginCard}>
@@ -24,7 +29,7 @@ export default function Login() {
           </div>
 
           <div className={s.btns}>
-            <button 
+            <button
             type="button"
             className={`${s.socialBtn} ${s.kakao}`}
             onClick={() => {
@@ -43,6 +48,10 @@ export default function Login() {
             <button type="button" className={`${s.socialBtn} ${s.google}`}>
               <img src="/google.png" alt="" aria-hidden className={s.icon} />
               <span>Google로 계속</span>
+            </button>
+
+            <button type="button" className={`${s.socialBtn} ${s.guest}`} onClick={handleGuestLogin}>
+              <span>게스트로 계속</span>
             </button>
           </div>
         </div>

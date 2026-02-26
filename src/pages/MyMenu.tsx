@@ -11,10 +11,17 @@ const NICKNAME_KEY = 'bhmj_nickname';
 
 export default function MyMenu() {
   const nav = useNavigate();
-  const { user: profile, refetch } = useAuth();
+  const { user: profile, refetch, logout } = useAuth();
 
   // ── 로그아웃 ──────────────────────────────────
   const handleLogout = async () => {
+    // 게스트 모드 체크
+    if (profile?.isGuest) {
+      logout();
+      nav('/', { replace: true });
+      return;
+    }
+
     await fetch('/auth/kakao/logout', { method: 'POST', credentials: 'include' });
     refetch();
     nav('/', { replace: true });

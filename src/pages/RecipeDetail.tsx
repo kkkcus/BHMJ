@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams, useLocation } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
+import { useAuth } from '../context/AuthContext';
 import BottomNav from '../components/BottomNav';
 import s from './RecipeDetail.module.css';
 
@@ -31,6 +32,7 @@ export default function RecipeDetail() {
   const nav = useNavigate();
   const { state } = useLocation() as { state: LocationState | null };
   const { addItem } = useCart();
+  const { user, logout } = useAuth();
 
   const decodedTitle = decodeURIComponent(title ?? '');
   const needSet = new Set(state?.need ?? []);
@@ -56,6 +58,13 @@ export default function RecipeDetail() {
     : [];
 
   const addAllToCart = () => {
+    // 게스트 모드 체크 - 로그인 필요
+    if (user?.isGuest) {
+      logout();
+      nav('/');
+      return;
+    }
+
     missingIngredients.forEach(ing => {
       const fracMatch = ing.qty.match(/^([\d]+)\/([\d]+)/);
       const numMatch = ing.qty.match(/^[\d.]+/);
