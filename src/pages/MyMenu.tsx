@@ -88,6 +88,14 @@ export default function MyMenu() {
   });
   const [avoidInput, setAvoidInput] = useState('');
 
+  // ── 북마크된 레시피 ────────────────────────────
+  const [bookmarkedRecipes, setBookmarkedRecipes] = useState<string[]>(() => {
+    try {
+      const saved = localStorage.getItem('bhmj_bookmarks');
+      return saved ? JSON.parse(saved) : [];
+    } catch { return []; }
+  });
+
   useEffect(() => {
     localStorage.setItem(AVOID_KEY, JSON.stringify(avoidList));
   }, [avoidList]);
@@ -156,6 +164,40 @@ export default function MyMenu() {
                 수정하기
               </button>
             </div>
+          </section>
+
+          {/* 나의 요리집 (북마크) */}
+          <section className={s.section}>
+            <div className={s.sectionTitle}>🔖 나의 요리집</div>
+            {bookmarkedRecipes.length === 0 ? (
+              <p style={{ color: '#999', fontSize: '14px', textAlign: 'center', padding: '20px' }}>
+                북마크한 레시피가 없어요
+              </p>
+            ) : (
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                {bookmarkedRecipes.map(recipe => (
+                  <button
+                    key={recipe}
+                    onClick={() => nav(`/recipe/${encodeURIComponent(recipe)}`)}
+                    style={{
+                      padding: '12px 16px',
+                      backgroundColor: '#f5f6fa',
+                      border: 'none',
+                      borderRadius: '8px',
+                      cursor: 'pointer',
+                      textAlign: 'left',
+                      fontSize: '14px',
+                      color: '#111827',
+                      transition: 'background-color 0.2s',
+                    }}
+                    onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#e5e7eb'}
+                    onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#f5f6fa'}
+                  >
+                    {recipe}
+                  </button>
+                ))}
+              </div>
+            )}
           </section>
 
           {/* 피하고 싶은 재료 */}

@@ -41,6 +41,15 @@ export default function RecipeDetail() {
   const [loading, setLoading] = useState(true);
   const [notFound, setNotFound] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [isBookmarked, setIsBookmarked] = useState(() => {
+    try {
+      const saved = localStorage.getItem('bhmj_bookmarks');
+      const bookmarks = saved ? JSON.parse(saved) : [];
+      return bookmarks.includes(decodedTitle);
+    } catch {
+      return false;
+    }
+  });
 
   useEffect(() => {
     fetch(`/api/recipes/${encodeURIComponent(decodedTitle)}`)
@@ -56,6 +65,27 @@ export default function RecipeDetail() {
   const missingIngredients = recipe
     ? recipe.ingredients.filter(ing => needSet.has(ing.name))
     : [];
+
+  const toggleBookmark = () => {
+    try {
+      const saved = localStorage.getItem('bhmj_bookmarks');
+      const bookmarks = saved ? JSON.parse(saved) : [];
+
+      if (isBookmarked) {
+        // 북마크 제거
+        const updated = bookmarks.filter((title: string) => title !== decodedTitle);
+        localStorage.setItem('bhmj_bookmarks', JSON.stringify(updated));
+      } else {
+        // 북마크 추가
+        bookmarks.push(decodedTitle);
+        localStorage.setItem('bhmj_bookmarks', JSON.stringify(bookmarks));
+      }
+
+      setIsBookmarked(!isBookmarked);
+    } catch (e) {
+      console.error('북마크 저장 실패:', e);
+    }
+  };
 
   const addAllToCart = () => {
     // 게스트 모드 체크 - 로그인 필요
@@ -86,7 +116,9 @@ export default function RecipeDetail() {
               <img src="/back.png" alt="뒤로" className={s.icon} />
             </button>
             <div className={s.title}>{decodedTitle}</div>
-            <div style={{ width: 40 }} />
+            <button className={s.iconCircle} onClick={toggleBookmark} aria-label="북마크">
+              <img src={isBookmarked ? "/bookmarkon.png" : "/bookmarkoff.png"} alt="" className={s.icon} />
+            </button>
           </div>
           <div className={s.notFound}><p>불러오는 중...</p></div>
         </main>
@@ -103,7 +135,9 @@ export default function RecipeDetail() {
               <img src="/back.png" alt="뒤로" className={s.icon} />
             </button>
             <div className={s.title}>{decodedTitle}</div>
-            <div style={{ width: 40 }} />
+            <button className={s.iconCircle} onClick={toggleBookmark} aria-label="북마크">
+              <img src={isBookmarked ? "/bookmarkon.png" : "/bookmarkoff.png"} alt="" className={s.icon} />
+            </button>
           </div>
           <div className={s.notFound}><p>레시피 정보를 찾을 수 없어요.</p></div>
         </main>
@@ -121,7 +155,9 @@ export default function RecipeDetail() {
             <img src="/back.png" alt="" className={s.icon} />
           </button>
           <div className={s.title}>{recipe.title}</div>
-          <div style={{ width: 40 }} />
+          <button className={s.iconCircle} onClick={toggleBookmark} aria-label="북마크">
+            <img src={isBookmarked ? "/bookmarkon.png" : "/bookmarkoff.png"} alt="" className={s.icon} />
+          </button>
         </div>
 
         {/* 스크롤 콘텐츠 */}
