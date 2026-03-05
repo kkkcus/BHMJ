@@ -32,9 +32,8 @@ export default function MyRecipes() {
       {/* 추천 결과 출력 */}
       <div className={s.scrollArea}>
         {bookmarkedRecipes.length === 0 ? (
-          <div style={{ textAlign: 'center', padding: '60px 20px' }}>
-            <img src="/myrecipesempty.png" alt="비어있음" style={{ width: '120px', marginBottom: '20px' }} />
-            <p style={{ color: '#999', fontSize: '14px' }}>북마크한 레시피가 없어요</p>
+          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%', minHeight: '300px' }}>
+            <img src="/myrecipesempty.png" alt="비어있음" style={{ width: '120px', opacity: 0.8 }} />
           </div>
         ) : (
           <div className={s.results}>
