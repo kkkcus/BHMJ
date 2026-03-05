@@ -27,9 +27,6 @@ export default function MyRecipes() {
           <div className={s.title}>나의 요리집</div>
           <div style={{ width: 40 }} />
         </div>
-
-        {/* 구분선 */}
-        <div className={s.divider} />
       </div>
 
       {/* 추천 결과 출력 */}
