@@ -32,7 +32,7 @@ export default function MyRecipes() {
       {/* 추천 결과 출력 */}
       <div className={s.scrollArea} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: 'calc(100vh - 200px)' }}>
         {bookmarkedRecipes.length === 0 ? (
-          <img src="/myrecipesempty.png" alt="비어있음" style={{ width: '120px', opacity: 0.8 }} />
+          <img src="/myrecipesempty.png" alt="비어있음" style={{ width: '200px', opacity: 0.8 }} />
         ) : (
           <div className={s.results}>
             {bookmarkedRecipes.map((title) => (
