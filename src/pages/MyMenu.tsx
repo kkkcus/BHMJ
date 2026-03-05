@@ -166,39 +166,30 @@ export default function MyMenu() {
             </div>
           </section>
 
-          {/* 나의 요리집 (북마크) */}
-          <section className={s.section}>
-            <div className={s.sectionTitle}>🔖 나의 요리집</div>
-            {bookmarkedRecipes.length === 0 ? (
-              <p style={{ color: '#999', fontSize: '14px', textAlign: 'center', padding: '20px' }}>
-                북마크한 레시피가 없어요
-              </p>
-            ) : (
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                {bookmarkedRecipes.map(recipe => (
-                  <button
-                    key={recipe}
-                    onClick={() => nav(`/recipe/${encodeURIComponent(recipe)}`)}
-                    style={{
-                      padding: '12px 16px',
-                      backgroundColor: '#f5f6fa',
-                      border: 'none',
-                      borderRadius: '8px',
-                      cursor: 'pointer',
-                      textAlign: 'left',
-                      fontSize: '14px',
-                      color: '#111827',
-                      transition: 'background-color 0.2s',
-                    }}
-                    onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#e5e7eb'}
-                    onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#f5f6fa'}
-                  >
-                    {recipe}
-                  </button>
-                ))}
-              </div>
-            )}
-          </section>
+          {/* 나의 요리집 바로가기 */}
+          <button
+            onClick={() => nav('/my-recipes')}
+            style={{
+              width: '100%',
+              padding: '16px 20px',
+              backgroundColor: '#f5f6fa',
+              border: '1px solid #e5e7eb',
+              borderRadius: '12px',
+              cursor: 'pointer',
+              fontSize: '16px',
+              fontWeight: '600',
+              color: '#111827',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              margin: '16px 0',
+            }}
+            onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#e5e7eb'}
+            onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#f5f6fa'}
+          >
+            <span>🔖 나의 요리집</span>
+            <span style={{ fontSize: '14px' }}>({bookmarkedRecipes.length})</span>
+          </button>
 
           {/* 피하고 싶은 재료 */}
           <section className={s.section}>

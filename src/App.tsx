@@ -6,6 +6,7 @@ import Recommend from './pages/Recommend';
 import Cart from './pages/Cart';
 import RecipeDetail from './pages/RecipeDetail';
 import MyMenu from './pages/MyMenu';
+import MyRecipes from './pages/MyRecipes';
 import ProtectedRoute from './components/ProtectedRoute';
 
 export default function App() {
@@ -17,6 +18,7 @@ export default function App() {
       <Route path="/cart" element={<ProtectedRoute><Cart /></ProtectedRoute>} />
       <Route path="/recipe/:title" element={<ProtectedRoute><RecipeDetail /></ProtectedRoute>} />
       <Route path="/my-menu" element={<ProtectedRoute><MyMenu /></ProtectedRoute>} />
+      <Route path="/my-recipes" element={<ProtectedRoute><MyRecipes /></ProtectedRoute>} />
       <Route path="*" element={<Navigate to="/home" replace />} />
     </Routes>
   );
