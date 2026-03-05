@@ -48,7 +48,7 @@ export default function MyRecipes() {
                   <div>
                     <div className={s.titleRow}>{title}</div>
                     <div className={s.meta}>
-                      {findRecipe(title)?.cooking_time ?? "-"}분 · {findRecipe(title)?.difficulty ?? "-"}
+                      {findRecipe(title)?.cookingTime ?? "-"}분 · {findRecipe(title)?.difficulty ?? "-"}
                     </div>
                   </div>
                 </div>
