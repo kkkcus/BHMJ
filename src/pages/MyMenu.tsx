@@ -89,7 +89,7 @@ export default function MyMenu() {
   const [avoidInput, setAvoidInput] = useState('');
 
   // ── 북마크된 레시피 ────────────────────────────
-  const [bookmarkedRecipes, setBookmarkedRecipes] = useState<string[]>(() => {
+  const [bookmarkedRecipes] = useState<string[]>(() => {
     try {
       const saved = localStorage.getItem('bhmj_bookmarks');
       return saved ? JSON.parse(saved) : [];
